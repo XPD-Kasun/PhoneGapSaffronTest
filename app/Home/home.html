@@ -1,0 +1,74 @@
+<div class="page home" data-page="home">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="center" style="line-height: 50px;">Saffron Kitchens</div>
+        </div>
+    </div>
+    <a href="#" class="floating-button color-orange" title="Edit Profile" style="top: 95px;" v-on:click="updateProfile()">
+
+        <i class="f7-icons">compose</i>
+    </a>
+    <div class="page-content" style="">
+        <div class="profile">
+            <div class="logo"></div>
+            <div class="profile-info">Welcome, {{firstName}}</div>
+        </div>
+        <div class="content-block-slim">
+            <div class="links-container">
+                <div class="card" v-on:click="newOrder()" title="Start creating a new order">
+                    <div class="card-content">
+                        <div class="card-content-inner">
+                            <i class="f7-icons">add_round</i>
+                            <div class="cmd">New Order</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" v-on:click="subscribe()" title="Manages your monthly and weekly subscriptions">
+                    <div class="card-content">
+                        <div class="card-content-inner">
+                            <i class="f7-icons">calendar</i>
+                            <div class="cmd">Subscriptions</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" v-on:click="history()" title="Views your past order history">
+                    <div class="card-content">
+                        <div class="card-content-inner">
+                            <i class="f7-icons">card</i>
+                            <div class="cmd">Order History</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" v-on:click="cancelOrder()" title="Cancel recently placed orders.">
+                    <div class="card-content">
+                        <div class="card-content-inner">
+                            <i class="f7-icons">close_round</i>
+                            <div class="cmd">Order Cancellation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" v-on:click="changePassword()" title="Change your current password">
+                    <div class="card-content">
+                        <div class="card-content-inner">
+                            <i class="f7-icons">gear</i>
+                            <div class="cmd">Change Password</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" v-on:click="signOut()" title="Sign out from your account">
+                    <div class="card-content">
+                        <div class="card-content-inner">
+                            <i class="f7-icons">logout</i>
+                            <div class="cmd">Sign Out</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

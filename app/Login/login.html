@@ -1,0 +1,64 @@
+
+<div class="page" data-page="login">
+    <div class="page-content">
+        <form action="/" method="post" id="test">
+            <div class="content-block-slim jsCenter" style="">
+
+                <div class="logo-wrap">
+                    <div class="logo"></div>
+                </div>
+                <div class="next-step" v-show="step == 'get-phone-number'">
+                    <div class="form-item"><input class="text-box" type="text" name="mobileNumber" placeholder="Mobile Number" v-model="phoneNumber" /></div>
+                </div>
+                <div class="next-step" v-show="step != 'get-phone-number'">
+                    <div class="form-item">
+                        <div class="mobile-lable-field">
+                            Mobile Number <span>{{phoneNumber}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="next-step" v-show="step == 'get-phone-number'">
+                    <div class="form-item">
+                        <div class="button button-fill yellow" v-on:click="submitMobile()" id="submit">SUBMIT</div>
+                    </div>
+                </div>
+                <div class="next-step" v-show="step == 'login-failed-next'">
+                    <div class="register-form-label form-item">
+                        Would you like to register with us<br />or continue as a guest
+                    </div>
+                    <div class="login-failed-selection-container">
+                        <div class="form-item">
+                            <div class="row">
+                                <div class="col-50"><div class="button button-fill yellow" v-on:click="registerUser()">REGISTER</div></div>
+                                <div class="col-50"><div class="button button-fill yellow">GUEST</div> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="next-step" v-show="step == 'login-type-password'">
+                    <div class="form-item register-form-label">
+                        <div class="specify-password">
+                            Hi {{name}}, please use your password to continue
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <input class="text-box" type="password" v-model="password" name="password" placeholder="Your Password" />
+                    </div>
+                    <div class="form-item">
+                        <div class="button button-fill yellow" v-on:click="login()">LOG IN</div>
+                    </div>
+                    <div class="form-item" style="margin-top: 20px;text-align: center;">
+                        <a href="#" v-on:click="forgetPassword()">Did you forget your password ?</a>
+                    </div>
+                </div>
+
+                <div class="form-item" v-show="step != 'login-type-password'">
+                    <div class="behind-text-title"><span>Or login with</span></div>
+                    <div class="button button-fill blue" v-on:click="fb()">LOGIN WITH FACEBOOK</div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>

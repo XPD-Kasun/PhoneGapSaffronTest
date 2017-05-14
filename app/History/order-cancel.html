@@ -1,0 +1,47 @@
+
+<div class="page" data-page="order-cancel">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="center" style="line-height: 50px;">Order Cancellation</div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="history">
+            <!--<div class="history-wrapper">
+                <div class="title" style="text-align: center;font-size: 19px;">
+                    Order History Between <br /> {{startDate}} and {{endDate}}
+                </div>
+            </div>-->
+            <div class="history-cards">
+                <div class="content-block-slim" style="overflow-y:auto;height:82vh; margin-top: 30px;">
+                    <div class="card" v-for="history in orders">
+                        <!--<div class="card-header">Header</div>-->
+                        <div class="card-content">
+                            <div class="card-content-inner">
+                                <div class="order-history-item">
+                                    <div class="title">
+                                        {{history.OrderDate}} - {{history.name}}
+                                    </div>
+                                    <div class="delivery-type">
+                                        Delivery Method : {{history.DeliveryType == "1" ? "Delivery" :"Pickup"}}
+                                    </div>
+                                    <div class="price">
+                                        Total Price : Rs. {{history.TotalPrice}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row" style="width: 100%;">
+                                <div class="col-50"><div class="button button-fill yellow" v-on:click="orderInfo(history)">Order Info</div></div>
+                                <div class="col-50"><div class="button button-fill yellow" v-on:click="cancelOrder(history)">Cancel Order</div></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

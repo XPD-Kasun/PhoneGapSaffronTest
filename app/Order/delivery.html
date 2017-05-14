@@ -1,0 +1,117 @@
+
+<div class="page" data-page="delivery">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="center" style="line-height: 50px;">Saffron Kitchens</div>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="content-block-slim" style="margin-top: 120px;">
+            <div class="form-item" style="text-align:center;font-weight:bold;">
+                I WOULD LIKE TO ORDER FOR
+            </div>
+            <div class="delivery-selector form-item" style="margin-bottom: 10px;">
+                <div class="row">
+                    <div class="col-100" v-show="!isPickup">
+                        <div class="button button-fill gray" style="font-size: 16px;" v-on:click="goDelivery()">
+                            DELIVERY
+                        </div>
+                    </div>
+                    <div class="col-100" v-show="isPickup">
+                        <div class="button button-fill gray" style="font-size: 16px;" v-on:click="goPickup()">
+                            PICK UP
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="delivery" v-show="!isPickup">
+                <div class="delivery-time">
+                    <div class="select" v-on:click="selectDeliveryTime()">
+                        Delivery Time  <span class="pickup-time" v-show="deliverytime">{{deliverytimeText}}</span>
+                    </div>
+                </div>
+                <div class="delivery-location">
+                    <div class="title"></div>
+                    <div class="list-block" style="margin-top: 10px;margin-bottom:10px;">
+                        <ul>
+                            <li>
+                                <label class="label-radio item-content">
+                                    <!-- Checked by default -->
+                                    <input type="radio" name="my-checkbox" value="home" v-model="locationType">
+                                    <div class="item-media">
+                                        <i class="f7-icons size-22">bag</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Home</div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="label-radio item-content">
+                                    <input type="radio" name="my-checkbox" value="office" v-model="locationType">
+                                    <div class="item-media">
+                                        <i class="f7-icons size-22">persons</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Office</div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="label-radio item-content">
+                                    <input type="radio" name="my-checkbox" value="new" v-model="locationType">
+                                    <div class="item-media">
+                                        <i class="f7-icons size-22">world</i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">New Address</div>
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-item" v-show="locationType == 'new'">
+                        <input type="text" v-model="newAddress" placeholder="Type new address here" class="text-box" />
+                    </div>
+
+                    <div class="form-item" v-show="locationType == 'new'">
+                        <div class="button button-fill yellow" v-on:click="navigateToMap()">FIND LOCATION</div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="pickup" v-show="isPickup">
+                <div class="form-item">
+                    <div class="select" v-on:click="selectPickupTime()">
+                        Pickup Time  <span class="pickup-time" v-show="pickuptime">{{pickuptimeText}}</span>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="select" v-on:click="selectOutlet()">
+                        {{ pickupLocation || "Please select outlet"}}
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="form-item" style="margin-top: 32px;">
+                <div class="row">
+                    <div class="col-20">
+                        <div class="button button-fill yellow" id="submit" v-on:click="back()">
+                            <i class="f7-icons size-22" style="line-height: 34px;">arrow_left</i>
+                        </div>
+                    </div>
+                    <div class="col-40">
+                        <div class="button button-fill yellow" id="submit" v-on:click="resetForm()">CLEAR</div>
+                    </div>
+                    <div class="col-40">
+                        <div class="button button-fill yellow" id="submit" v-on:click="xcontinue()">CONTINUE</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
