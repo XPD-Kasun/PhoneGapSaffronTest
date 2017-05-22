@@ -28,7 +28,7 @@
                     
                     ref.addEventListener('loadstop', function(event) { 
 
-                           if(event.url.includes("https://www.facebook.com/connect/login_success.html"))
+                           if(event.url.toString().includes("https://www.facebook.com/connect/login_success.html"))
                            {
                                var url = event.url;
                                var code = getUrlVars(url)["code"];
