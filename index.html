@@ -1,0 +1,86 @@
+<html>
+    <head>
+
+        <script src="Scripts/jquery-3.1.1.min.js"></script>
+    </head>
+    <body>
+       
+        <button type="button" id="b1">Click Me!</button>
+        <br>
+        <div id="c1">
+        </div>
+        <br />
+        <div id="c2">
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+
+    <script>
+      
+        document.addEventListener("deviceready", function() {
+            try {
+
+                $('#b1').click(function() {
+
+                    var ref = cordova.InAppBrowser.open('https://www.facebook.com/v2.9/dialog/oauth?client_id=312165199155195&redirect_uri=https://www.facebook.com/connect/login_success.html', '_blank', 'location=yes', 'toolbar=no');
+                    
+                    ref.addEventListener('loadstop', function(event) { 
+
+                           if(event.url.includes("https://www.facebook.com/connect/login_success.html"))
+                           {
+                               var url = event.url;
+                               var code = getUrlVars(url)["code"];
+                               ref.close();
+
+                               var url = "https://graph.facebook.com/v2.9/oauth/access_token?" +
+                                            "client_id=312165199155195" +
+                                            "&redirect_uri=https://www.facebook.com/connect/login_success.html" +
+                                            "&client_secret=ca25adcbb1ac797de30064941752bd70" +
+                                            "&code=" + code;
+
+                               var token = "";
+
+                                $.get(url, function (data) {
+
+                                    token = data.access_token;
+
+                                    $("#c1").text(JSON.stringify(data));
+
+                                    $.ajax({
+                                        url: "https://graph.facebook.com/v2.9/me?fields=id,name,email,gender",
+                                        headers: {'Authorization': 'OAuth ' + token }
+                                    })
+                                    .done(function (data) {
+                                        $("#c2").text(JSON.stringify(data));
+                                    });
+
+                                });
+                           }
+
+                    });
+
+                });
+
+            } catch (err) {
+                alert(err.message);
+            }
+
+        }, false);
+
+        function getUrlVars(url) {
+            var vars = [], hash;
+            var hashes = url.slice(url.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+    </script>
+
+    </body>
+</html>

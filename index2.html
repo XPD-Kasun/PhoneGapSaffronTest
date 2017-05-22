@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>InAppBrowser.addEventListener Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="inappbrowser.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+
+        try {
+              window.open = cordova.InAppBrowser.open;
+
+           window.open("https://www.w3schools.com");
+        }
+         catch(err) {
+
+                    alert(err.message);
+
+                    }
+    }
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
