@@ -1,0 +1,372 @@
+<div class="page navbar-fixed toolbar-fixed" data-page="order-menu-s">
+    <div class="navbar" style="background: #f1f1f1;">
+        <div class="navbar-inner">
+            <div class="center" style="line-height: 50px;">Your Ordering Menu</div>
+        </div>
+    </div>
+
+    <div class="page-content" style="display:none;padding-bottom:0px;">
+
+        <!--<div class="menu-bar">
+            <div class="left">-->
+                <!--<div class="menu-button" v-on:click="selectSpecial()"
+                     v-bind:class="[isSpecialSelected == true ? 'active': (lock? 'lock' : '') ]">
+                    Special
+                </div>-->
+            <!--</div>
+            <div class="right">-->
+                <!--<div class="menu-button" v-on:click="selectToday()"
+                     v-bind:class="[currentDayIndex == 0 ? 'active': (lock? 'lock' : '') ]">
+                    {{today}}
+                </div>
+                <div class="menu-button" v-on:click="selectTomorrow()"
+                      v-bind:class="[currentDayIndex == 1 ? 'active' : (lock? 'lock' : '') ]">
+                    {{tomorrow}}
+                </div>
+                <div class="menu-button" v-on:click="selectAfterTomorrow()"
+                      v-bind:class="[currentDayIndex == 2 ? 'active' : (lock? 'lock' : '') ]">
+                    {{afterTomorrow}}
+                </div>-->
+            <!--</div>
+        </div>-->
+
+        <div class="content-block-slim" style="margin-top: 70px;">
+            <!--main extra menu selection area-->
+            <div class="form-item" v-show="!isSpecialSelected">
+                <div class="buttons-row ordering">
+                    <div href="#" class="button button-big button-fill"
+                         v-on:click="selectMainMenu()" v-bind:class="[currentMenuSelection == 'main' ? 'black': 'yellow']">MAIN</div>
+                    <div href="#" class="button button-big button-fill"
+                         v-on:click="selectExtraMenu()" v-bind:class="[currentMenuSelection == 'extra' ? 'black': 'yellow']">EXTRA</div>
+                </div>
+            </div>
+
+            <!--Area customer menu choices-->
+            <div class="customer-area" style="margin-bottom: 15px;">
+
+                <!--Normal menu in main format-->
+                <div class="normal-main" v-show="normalMainView">
+
+                    <!--main curry-->
+                    <div class="form-item row" style="display:none">
+                        <div class="col-80">
+                            <div class="select" v-on:click="choiceNormalMainCurry()">
+                                {{normalMenu.mainCurry.name || "Main Curry"}}
+                            </div>
+                        </div>
+                        <div class="col-20"><input type="number" class="text-box-sm" v-model="normalMenu.mainCurry.quantity" /></div>
+                        <!--<div class="col-20">
+                            <div class="wan-spinner wan-spinner-1">
+                                <a href="javascript:void(0)" class="minus">-</a>
+                                <input type="text" value="1" style="width: 100px;">
+                                <a href="javascript:void(0)" class="plus">+</a>
+                            </div>
+
+                        </div>-->
+                    </div>
+
+                    <!--Rice type-->
+                    <div class="form-item">
+                        <div class="title">RICE</div>
+                    </div>
+
+                    <div class="form-item row">
+                        <div class="col-100">
+                            <div class="select" v-on:click="choiceRice()">
+                                {{ normalMenu.riceType.name || "Select Rice Type" }}
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <!--<div class="form-item">
+                        <div class="select" v-on:click="choiceRiceType()">
+                            {{normalMenu.riceType.name || "Rice Type"}}
+                        </div>
+                    </div>-->
+                    <!--Vegitable options-->
+                    <div v-show="showVegitableOptions">
+
+                        <div class="form-item">
+                            <div class="title">VEGITABLE OPTIONS (MAX 3 ITEMS)</div>
+                        </div>
+
+                        <div class="form-item row">
+                            <div class="col-100">
+                                <div class="select" v-on:click="choiceOptions(0)">
+                                    {{normalMenu.options[0].name || "Extra Item 1" }}
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="form-item row">
+                            <div class="col-100">
+                                <div class="select" v-on:click="choiceOptions(1)">
+                                    {{ normalMenu.options[1].name || "Extra Item 1" }}
+                                </div>
+                            </div>
+                           
+                        </div>
+
+                        <div class="form-item row" >
+                            <div class="col-100">
+                                <div class="select" v-on:click="choiceOptions(2)">
+                                    {{ normalMenu.options[2].name || "Extra Item 1" }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-item row">
+                            <div class="col-100">
+                                <div class="select" v-on:click="choiceOptions(3)">
+                                    {{ normalMenu.options[3].name || "Extra Item 1" }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="form-item row">
+                            <div class="col-100">
+                                <div class="select" v-on:click="choiceOptions(4)">
+                                    {{ normalMenu.options[3].name || "Extra Item 1" }}
+                                </div>
+                            </div>
+                        </div>-->
+                        
+                        <!--<div class="form-item">
+                                <div class="list-block" style="margin-top: 10px;margin-bottom:10px;height: 200px;overflow: auto;">
+                                    <ul>
+                                        <template v-for="choice in normalMainChoices">
+                                            <li>
+                                                <label class="label-checkbox item-content">
+
+                                                    <input :disabled="normalMenu.options.length >= 3 && normalMenu.options.indexOf(choice.id) == -1"
+                                                           type="checkbox"
+                                                           name="my-checkbox"
+                                                           :value="choice.id"
+                                                           v-model="normalMenu.options">
+                                                    <div class="item-media">
+                                                        <i class="icon icon-form-checkbox"></i>
+                                                    </div>
+                                                    <div class="item-inner">
+                                                        <div class="item-title">{{choice.name}}</div>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>--->
+                        <!--Accompany-->
+                        <div class="form-item">
+                            <div class="title">ACCOMPANY</div>
+                        </div>
+                        <div class="form-item row">
+                            <div class="col-100">
+                                <div class="select" v-on:click="choiceAccompany()">
+                                    {{ normalMenu.accompany.name || "Extra Item 1" }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--special instructions-->
+                        <div class="form-item">
+                            <div class="title">SPECIAL INSTRUCTIONS</div>
+                        </div>
+                        <div class="form-item">
+                            <textarea class="text-area" v-model="normalMenu.specialInstruction"></textarea>
+                        </div>
+
+                        <div class="row">
+                            <!-- Each "cell" has col-[widht in percents] class -->
+                            <div class="col-33">
+                                <!-- Add lunch-->
+                                <div class="form-item clearfix">
+                                    <div class="addlunch cart left">
+                                        {{currentMenuCount}} NOS
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-33">
+                                <!-- Add lunch-->
+                                <div class="form-item clearfix">
+                                    <div class="addlunch right btn" v-on:click="addLunch()">
+                                        + Add
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Normal menu in extra format-->
+                <div class="normal-extra" v-show="normalExtraView">
+
+                    <div class="form-item row">
+                        <div class="col-100">
+                            <div class="select" v-on:click="choiceNormalExtra(0)">
+                                {{normalMenu.extra[0].name || "Extra Portion 1"}}
+                            </div>
+                        </div>
+                       
+
+                    </div>
+                    <div class="form-item row">
+                        <div class="col-100">
+                            <div class="select" v-on:click="choiceNormalExtra(1)">
+                                {{normalMenu.extra[1].name || "Extra Portion 2"}}
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="form-item row">
+                        <div class="col-100">
+                            <div class="select" v-on:click="choiceNormalExtra(2)">
+                                {{normalMenu.extra[2].name || "Extra Portion 3"}}
+                            </div>
+                        </div>
+                      
+                    </div>
+                    <div class="form-item row">
+                        <div class="col-100">
+                            <div class="select" v-on:click="choiceNormalExtra(3)">
+                                {{normalMenu.extra[3].name || "Extra Portion 4"}}
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                    <div class="form-item row">
+                        <div class="col-100">
+                            <div class="select" v-on:click="choiceNormalExtra(4)">
+                                {{normalMenu.extra[4].name || "Extra Portion 5"}}
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+
+                <!--Special menu-->
+                <div class="special" v-show="specialView">
+
+                    <!--meal required on-->
+                    <div class="form-item">
+                        <div class="title">MEAL REQUIRED ON</div>
+                    </div>
+                    <div class="form-item">
+                        <div class="select" v-on:click="selectSpecialMealDay()" id="specialMealReq">
+                            Day <span v-on:click="selectSpecialMealDay()" class="pickup-time">{{specialMealRequiredOn}}</span>
+                        </div>
+                    </div>
+
+                    <!--special menus-->
+                    <div class="form-item">
+                        <div class="title">SPECIAL MENUS</div>
+                    </div>
+                    <div class="form-item row">
+                        <div class="col-80">
+                            <div class="select" v-on:click="choiceSpecialMenu()">
+                                {{specialMenu.menu.name || "Main Curry"}}
+                            </div>
+                        </div>
+                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.menu.quantity" /></div>
+
+                    </div>
+
+                    <!--extra-->
+                    <div class="form-item">
+                        <div class="title">EXTRA</div>
+                    </div>
+                    <div class="form-item row">
+                        <div class="col-80">
+                            <div class="select" v-on:click="choiceSpecialExtra(0)">
+                                {{ "Extra Item 1" }}
+                            </div>
+                        </div>
+                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.extra[0].quantity" /></div>
+                    </div>
+                    <div class="form-item row">
+                        <div class="col-80">
+                            <div class="select" v-on:click="choiceSpecialExtra(1)">
+                                {{ "Extra Item 2" }}
+                            </div>
+                        </div>
+                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.extra[1].quantity" /></div>
+                    </div>
+                    <div class="form-item row">
+                        <div class="col-80">
+                            <div class="select" v-on:click="choiceSpecialExtra(2)">
+                                {{ "Extra Item 3" }}
+                            </div>
+                        </div>
+                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.extra[2].quantity" /></div>
+                    </div>
+                    <div class="form-item row">
+                        <div class="col-80">
+                            <div class="select" v-on:click="choiceSpecialExtra(3)">
+                                {{ "Extra Item 4" }}
+                            </div>
+                        </div>
+                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.extra[3].quantity" /></div>
+                    </div>
+                    <div class="form-item row">
+                        <div class="col-80">
+                            <div class="select" v-on:click="choiceSpecialExtra(4)">
+                                {{ "Extra Item 5" }}
+                            </div>
+                        </div>
+                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.extra[4].quantity" /></div>
+                    </div>
+
+                    <!--special instructions-->
+                    <div class="form-item">
+                        <div class="title">SPECIAL INSTRUCTIONS</div>
+                    </div>
+                    <div class="form-item">
+                        <textarea class="text-area" v-model="specialMenu.specialInstruction"></textarea>
+                    </div>
+
+                    <div class="row">
+                        <!-- Each "cell" has col-[widht in percents] class -->
+                        <div class="col-33">
+                            <!-- Add lunch-->
+                            <div class="form-item clearfix">
+                                <div class="addlunch cart left">
+                                    {{currentMenuCount}} NOS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-33">
+                            <!-- Add lunch-->
+                            <div class="form-item clearfix">
+                                <div class="addlunch right btn" v-on:click="addSpecial()">
+                                    + Add
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!--button row-->
+            <div class="form-item" v-show="currentMenuSelection == 'main'">
+                <div class="row" style="margin-bottom:10px;">
+                    <div class="col-50">
+                        <div class="button button-fill yellow cancel" v-on:click="back()">Back</div>
+                    </div>
+                    <div class="col-50">
+                        <div class="button button-fill yellow continue" v-on:click="proceed()">CONTINUE</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
