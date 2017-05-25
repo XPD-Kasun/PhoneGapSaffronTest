@@ -45,21 +45,21 @@
 
         if (platform == 'app') {
 
+           
+            addScript('cordova.js');
             document.addEventListener("deviceready", function () {
 
                 addScript('scripts/app.js');
                 try    
                 {
-                    $('#b1').click(function () {
-                        
-                    });
+                   
                 } catch (err) {
                     alert(err.message);
                 }
 
 
 
-            }, true);
+            }, false);
 
         }
         else {
