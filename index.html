@@ -3,6 +3,14 @@
         window.apiRoot = 'http://192.168.2.200/sfapi/';
         window.posRoot = 'https://reztguruonlineorderingapi.vdinepos.com/v1/';
     </script><script>
+
+if (!String.prototype.includes) {
+    String.prototype.includes = function() {
+        'use strict';
+        return String.prototype.indexOf.apply(this, arguments) !== -1;
+    };
+}
+
         //Platform that app targets : ['web','app']
         window.platform = 'app';
 
