@@ -1,45 +1,63 @@
 <div class="popup popup-history-info">
     <div class="content-block">
         <div class="list-block inset" style="margin-bottom:10px;">
-            <div class="title" style="font-size: 20px;">{{restName}}</div>
+            <div class="title" style="font-size: 20px;">Order Detail</div>
+            <div class="title">{{restName}}</div>
         </div>
         <div class="inset history-info" style="margin-top:10px;">
             <div class="outer">
                 <div class="inner">
                     <div class="order-placement" style="margin-bottom:10px;">
-                        <div class="customer-name">Customer Name : {{clientName}}</div>
+                        <div class="delivery-type">Delivery Type : {{deliveryType}}</div>
                         <div class="order-date">Order Date : {{orderDate}}</div>
+                        <div class="order-total">Total Price : Rs. {{totalPrice}} /=</div>
                     </div>
                     <div class="order-details">
-
-                        <div class="card" v-for="item in orderSet.orderAr">
-                            <div class="card-header">
-                                <div class="main-food">
-                                    {{item.name}} <span class="quantity">{{" X " + item.quantity}}</span>
+                        <div class="order-list-group" v-for="orderListItem in orderInfo">
+                            <div class="card" v-for="item in orderListItem.list">
+                                <div class="card-header">
+                                    <div class="main-food">
+                                        {{item.name}} (Rs. {{item.price}}) <span class="quantity">{{" X " + item.quantity}}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-content">
-                                <div class="order-item">
-
-                                    <div class="order-list">
+                                <div class="card-content row">
+                                    <div class="order-item col-100 tablet-50" v-show="item.riceType">
+                                        <span class="item-type">Rice Type</span>
+                                        <span class="item-value">{{item.riceType}}</span>
+                                    </div>
+                                    <div class="order-item  col-100 tablet-50" v-show="item.accompany">
+                                        <span class="item-type">Accompany</span>
+                                        <span class="item-value">{{item.accompany}}</span>
+                                    </div>
+                                    <div class="order-list col-100  tablet-50" v-show="item.options.length > 0">
+                                        <div class="item-group-type">Option List</div>
                                         <ul>
-                                            <li v-for="mod in item.modifiers">
-                                                <div class="history-order-item" data-id="{{mod.id}}">
-                                                    {{mod.name}} {{" - " + mod.price}}
+                                            <li v-for="mod in item.options">
+                                                <div class="order-item">
+                                                    <span class="item-value">{{mod}}</span>
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
-                                  
+                                    <div class="order-list  col-100 tablet-50" v-show="item.extras.length > 0">
+                                        <div class="item-group-type">Extra Portions</div>
+                                        <ul>
+                                            <li v-for="mod in item.extras">
+                                                <div class="order-item-2">
+                                                    <span class="item-value">
+                                                        {{mod.name}} x {{mod.quantity}} (Rs. {{mod.price}})
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="total-price">
-                                    Total Price <span class="price">{{item.price}}</span>    
+                                <div class="card-footer">
+                                    <div class="left">Price </div>
+                                    <div class="right">Rs. {{item.price * item.quantity + item.extraPrice}}</div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
 

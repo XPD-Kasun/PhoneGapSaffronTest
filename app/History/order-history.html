@@ -33,7 +33,7 @@
                     Order History Between <br /> {{startDate}} and {{endDate}}
                 </div>
             </div>
-            <div class="history-cards" v-hide="histories.length == 0">
+            <div class="history-cards" v-show="histories.length != 0">
                 <div class="content-block-slim" style="overflow-y:auto;height:78vh;">
                     <div class="card" v-for="history in histories">
                         <!--<div class="card-header">Header</div>-->
@@ -60,9 +60,12 @@
                     </div>
                 </div>
             </div>
-            <div class="no-orders" v-show="histories.length == 0">
-                There are no orders in history
+            <div class="content-block">
+                <div class="no-orders" v-show="histories.length == 0">
+                    <i class="f7-icons color-black" style="position: relative;left: -10px;top: 4px;">info</i>Look like there are no orders recorded .
+                </div>
             </div>
+           
         </div>
     </div>
 </div>
