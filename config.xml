@@ -31,5 +31,5 @@
         <allow-intent href="market:*" />
     </platform>
     <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
-    
+    <preference name="Fullscreen" value="true" /> 
 </widget>
