@@ -1,0 +1,64 @@
+<div class="page" data-page="order-history-s">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="center" style="line-height: 50px;">Saffron Kitchens</div>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="content-block-title">Subscription History</div>
+        <div class="row" >
+            <div class="col-10">
+            </div>
+            <div class="col-70">
+                <div class="list-block">
+                    <ul>
+                        <!-- Single radio input -->
+                        <li  disabled="disabled" v-on:click="week1Click()">
+                            <label class="label-radio item-content">
+                                <!-- Checked by default -->
+                                <input  class="optWeek1" type="radio" name="my-radio" value="week1">
+                                <div class="item-inner" >
+                                    <div id="chkWeek1Text" class="item-title">Books</div>
+                                </div>
+                            </label>
+                        </li>
+                        <!-- Another radio input -->
+                        <li  disabled="disabled"  v-on:click="week2Click()">
+                            <label class="label-radio item-content">
+                                <input class="optWeek2" type="radio" name="my-radio" value="week2" >
+                                <div class="item-inner">
+                                    <div id="chkWeek2Text" class="item-title">Movies</div>
+                                </div>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-20">
+            </div>
+        </div>
+
+
+
+
+
+        <div class="list-block">
+            <ul class="w1_ul" style="background:transparent"></ul>
+        </div>
+
+
+
+        <div class="row" style="margin-top:15px;margin-left:10px;">
+            <div class="col-20">
+                <div class="button button-fill yellow" id="submit" onclick="vMethods.back()">
+                    <i class="f7-icons size-22" style="line-height: 34px;">arrow_left</i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>

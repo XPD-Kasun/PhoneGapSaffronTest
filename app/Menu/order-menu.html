@@ -1,11 +1,11 @@
 <div class="page navbar-fixed toolbar-fixed" data-page="order-menu">
     <div class="navbar">
         <div class="navbar-inner">
-            <div class="center" style="line-height: 50px;">Your Ordering Menu</div>
+            <div class="center" style="line-height: 50px;">My Order</div>
         </div>
     </div>
 
-    <div class="page-content" style="display:none;padding-bottom:0px;">
+    <div class="page-content main" style="display:none;padding-bottom:0px;">
 
         <div class="menu-bar">
             <div class="left">
@@ -16,7 +16,8 @@
             </div>
             <div class="right">
                 <div class="menu-button" v-on:click="selectToday()"
-                     v-bind:class="[currentDayIndex == 0 ? 'active': (lock? 'lock' : '') ]">
+                     v-bind:class="[currentDayIndex == 0 ? 'active': (lock? 'lock' : '') ]"
+                     v-show="showToday">
                     {{today}}
                 </div>
                 <div class="menu-button" v-on:click="selectTomorrow()"
@@ -61,10 +62,19 @@
                     <div class="form-item row">
                         <div class="col-80">
                             <div class="select" v-on:click="choiceNormalMainCurry()">
-                                {{normalMenu.mainCurry.name || "Main Curry"}}
+                                {{normalMenu.mainCurry.name || "Lunch Type"}}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="normalMenu.mainCurry.quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="normalMenu.mainCurry.quantity">
+                                <option selected="selected">1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm"  />-->
+                        </div>
                         <!--<div class="col-20">
                             <div class="wan-spinner wan-spinner-1">
                                 <a href="javascript:void(0)" class="minus">-</a>
@@ -136,24 +146,25 @@
                     </div>
 
                     <div class="row">
-                        <!-- Each "cell" has col-[widht in percents] class -->
                         <div class="col-33">
                             <!-- Add lunch-->
                             <div class="form-item clearfix">
-                                <div class="addlunch cart left">
-                                    {{currentMenuCount}} NOS
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-33">
-                            <!-- Add lunch-->
-                            <div class="form-item clearfix">
-                                <div class="addlunch right btn" v-on:click="addLunch()">
+                                <div class="addlunch left btn" v-on:click="addLunch()">
                                     + Add
                                 </div>
                             </div>
 
                         </div>
+                        <!-- Each "cell" has col-[widht in percents] class -->
+                        <div class="col-33">
+                            <!-- Add lunch-->
+                            <div class="form-item clearfix">
+                                <div class="addlunch cart right">
+                                    {{currentMenuCount}} NOS
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
 
@@ -168,7 +179,17 @@
                                 {{normalMenu.extra[0].name || "Extra Portion 1"}}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="normalMenu.extra[0].quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="normalMenu.extra[0].quantity">
+                                <option selected="selected">0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm" v-model="normalMenu.extra[0].quantity" />-->
+                        </div>
 
                     </div>
                     <div class="form-item row">
@@ -177,7 +198,17 @@
                                 {{normalMenu.extra[1].name || "Extra Portion 2"}}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="normalMenu.extra[1].quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="normalMenu.extra[1].quantity">
+                                <option selected="selected">0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm" v-model="normalMenu.extra[1].quantity" />-->
+                        </div>
                     </div>
                     <div class="form-item row">
                         <div class="col-80">
@@ -185,7 +216,17 @@
                                 {{normalMenu.extra[2].name || "Extra Portion 3"}}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="normalMenu.extra[2].quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="normalMenu.extra[2].quantity">
+                                <option selected="selected">0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm" v-model="normalMenu.extra[2].quantity" />-->
+                        </div>
 
                     </div>
                     <div class="form-item row">
@@ -194,7 +235,17 @@
                                 {{normalMenu.extra[3].name || "Extra Portion 4"}}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="normalMenu.extra[3].quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="normalMenu.extra[3].quantity">
+                                <option selected="selected">0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm" v-model="normalMenu.extra[3].quantity" />-->
+                        </div>
 
                     </div>
 
@@ -204,7 +255,17 @@
                                 {{normalMenu.extra[4].name || "Extra Portion 5"}}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="normalMenu.extra[4].quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="normalMenu.extra[4].quantity">
+                                <option selected="selected">0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm" v-model="normalMenu.extra[4].quantity" />-->
+                        </div>
 
                     </div>
                 </div>
@@ -232,7 +293,16 @@
                                 {{specialMenu.menu.name || "Main Curry"}}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.menu.quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="specialMenu.menu.quantity">
+                                <option selected="selected">1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm" v-model="specialMenu.menu.quantity" />-->
+                        </div>
 
                     </div>
 
@@ -246,7 +316,17 @@
                                 {{ specialMenu.extra[0].name || "Extra Item 1" }}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.extra[0].quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="specialMenu.extra[0].quantity">
+                                <option selected="selected">0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm" v-model="specialMenu.extra[0].quantity" />-->
+                        </div>
                     </div>
                     <div class="form-item row">
                         <div class="col-80">
@@ -254,7 +334,17 @@
                                 {{ specialMenu.extra[1].name || "Extra Item 2" }}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.extra[1].quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="specialMenu.extra[1].quantity">
+                                <option selected="selected">0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm" v-model="specialMenu.extra[1].quantity" />-->
+                        </div>
                     </div>
                     <div class="form-item row">
                         <div class="col-80">
@@ -262,7 +352,17 @@
                                 {{ specialMenu.extra[2].name || "Extra Item 3" }}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.extra[2].quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="specialMenu.extra[2].quantity">
+                                <option selected="selected">0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm" v-model="specialMenu.extra[2].quantity" />-->
+                        </div>
                     </div>
                     <div class="form-item row">
                         <div class="col-80">
@@ -270,7 +370,17 @@
                                 {{ specialMenu.extra[3].name || "Extra Item 4" }}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.extra[3].quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="specialMenu.extra[3].quantity">
+                                <option selected="selected">0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm" v-model="specialMenu.extra[3].quantity" />-->
+                        </div>
                     </div>
                     <div class="form-item row">
                         <div class="col-80">
@@ -278,7 +388,17 @@
                                 {{ specialMenu.extra[4].name || "Extra Item 5" }}
                             </div>
                         </div>
-                        <div class="col-20"><input type="number" class="text-box-sm" v-model="specialMenu.extra[4].quantity" /></div>
+                        <div class="col-20">
+                            <select class="text-box-sm" v-model="specialMenu.extra[4].quantity">
+                                <option selected="selected">0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            <!--<input type="number" class="text-box-sm" v-model="specialMenu.extra[4].quantity" />-->
+                        </div>
                     </div>
 
                     <!--special instructions-->
@@ -290,24 +410,26 @@
                     </div>
 
                     <div class="row">
-                        <!-- Each "cell" has col-[widht in percents] class -->
                         <div class="col-33">
                             <!-- Add lunch-->
                             <div class="form-item clearfix">
-                                <div class="addlunch cart left">
-                                    {{currentMenuCount}} NOS
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-33">
-                            <!-- Add lunch-->
-                            <div class="form-item clearfix">
-                                <div class="addlunch right btn" v-on:click="addSpecial()">
+                                <div class="addlunch left btn" v-on:click="addSpecial()">
                                     + Add
                                 </div>
                             </div>
 
                         </div>
+                        <!-- Each "cell" has col-[widht in percents] class -->
+                        <div class="col-33">
+
+                            <!-- Add lunch-->
+                            <div class="form-item clearfix">
+                                <div class="addlunch cart right">
+                                    {{currentMenuCount}} NOS
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>
@@ -327,5 +449,8 @@
 
             </div>
         </div>
+    </div>
+    <div class="page-content loader" style="padding-bottom:0px;">
+
     </div>
 </div>

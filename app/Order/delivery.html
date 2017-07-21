@@ -7,9 +7,9 @@
     </div>
 
     <div class="page-content">
-        <div class="content-block-slim" style="margin-top: 120px;">
+        <div class="content-block-slim" style="margin-top: 30px;">
             <div class="form-item" style="text-align:center;font-weight:bold;">
-                I WOULD LIKE TO ORDER FOR
+                I would like
             </div>
             <div class="delivery-selector form-item" style="margin-bottom: 10px;">
                 <div class="row">
@@ -30,7 +30,7 @@
                     <div class="select" v-on:click="selectDeliveryTime()">
                         Delivery Time  <span class="pickup-time" v-show="deliverytime">{{deliverytimeText}}</span>
                     </div>
-                </div>
+                </div>               
                 <div class="delivery-location">
                     <div class="title"></div>
                     <div class="list-block" style="margin-top: 10px;margin-bottom:10px;">
@@ -81,6 +81,11 @@
 
 
                 </div>
+                <!--<div class="form-item">
+                    <div class="select" >
+                        Delivery Location : Fort
+                    </div>
+                </div>-->
             </div>
             <div class="pickup" v-show="isPickup">
                 <div class="form-item">
@@ -88,9 +93,9 @@
                         Pickup Time  <span class="pickup-time" v-show="pickuptime">{{pickuptimeText}}</span>
                     </div>
                 </div>
-                <div class="form-item">
+                <div class="form-item" style="display:none;">
                     <div class="select" v-on:click="selectOutlet()">
-                        {{ pickupLocation || "Please select outlet"}}
+                        {{ pickupLocation || "Please select outlet" }}
                     </div>
                 </div>
 
@@ -110,6 +115,13 @@
                         <div class="button button-fill yellow" id="submit" v-on:click="xcontinue()">CONTINUE</div>
                     </div>
                 </div>
+            </div>
+            <div class="content-block" style="margin-top: 30px;margin-bottom:10px;color:black;" v-show="!isPickup">
+                <p>
+                    <i class="f7-icons size-22">info</i>
+                    <div>Delivery locations - Colombo 1-5 and 7</div>
+                </p>
+
             </div>
         </div>
 

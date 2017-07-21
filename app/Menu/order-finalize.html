@@ -16,16 +16,15 @@
                             <ul style="background-color: #f1f1f1;list-style: none;padding-left: 0px;">
                                 <li class="item-content" v-for="listItem in order.list">
                                     <div class="row">
-                                        <div class="col-75">{{listItem.name}} <span v-show="listItem.quantity > 0"> x {{listItem.quantity}}</span></div>
+                                        <div class="col-75">{{listItem.name}} <span v-show="listItem.quantity > 0"> qty {{listItem.quantity}}</span></div>
                                         <div class="col-25" style="text-align: right">Rs. {{listItem.price * listItem.quantity}}</div>
                                     </div>
-                                    <div v-show="listItem.extras.length > 0">                                     
+                                    <div v-show="listItem.extras.length > 0">
                                         <div class="row extra-price-item" v-for="extraItem in listItem.extras">
                                             +&nbsp;<div class="col-75">{{extraItem.name}} x {{extraItem.quantity}}</div>
                                             <div class="col-25" style="text-align: right">Rs. {{extraItem.price}}</div>
                                         </div>
                                     </div>
-                                   
                                 </li>
                             </ul>
                         </div>
@@ -40,8 +39,14 @@
                     </div>
                 </div>
             </div>
+            <div class="form-item">
+                <div style="font-size:10px;float:right;">(Inclusive of taxes)</div>
+                <div style="clear:both"></div>
+
+            </div>
+
             <div class="form-item" style="margin-bottom: 10px;">
-                <div style="margin: 30px 0px;">Are you sure you would like to place this order?</div>
+                <div style="margin: 30px 0px;">Ready to place your order?</div>
                 <div class="button button-fill yellow" style="margin: 10px 0px;" v-on:click="changeOrder()">
                     CHANGE ORDER
                 </div>
@@ -53,7 +58,7 @@
                     </div>
                     <div class="col-50">
                         <div class="button button-fill yellow" v-on:click="pushOrder()">
-                            CONFIRM
+                            CONTINUE
                         </div>
                     </div>
                 </div>

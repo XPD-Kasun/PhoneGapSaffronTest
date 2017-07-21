@@ -1,0 +1,94 @@
+
+<div class="page" data-page="subscribeInit">
+    <div class="page-content">
+        <form action="/" method="post" id="test">
+
+
+
+
+
+
+            <div class="content-block-slim" style="margin-top:120px;font-weight:bold">
+                <div class="form-item">
+                    <div class="row">
+                        <div class="col-100">
+                            <div id="btnNewSubscription" class="button button-fill yellow" v-on:click="newSubscription()">
+                                NEW SUBSCRIPTION
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin:7% 0 7% 0">
+                        <!--<div class="col-45" style="margin:5px 0px 5px 0px; text-align:center">
+                            <div style="height:1px;background:#686868;position:relative;top:10px;"></div>
+                        </div>
+                        <div class="col-10" style="margin:5px 0px 5px 0px; text-align:center;">
+                            Or
+                        </div>
+                        <div class="col-45" style="margin:5px 0px 5px 0px; text-align:center;display:table-cell">
+                            <div style="height:1px;background:#686868;position:relative;top:10px;"></div>
+                        </div>-->
+                    </div>
+
+                    <div id="title" style="" class="content-block-title"></div>
+
+                    <div class="list-block">
+                        <ul style="background:transparent">
+                            <li id="w1" style="display:none">
+                                <a href="#" class="item-link item-content" name="w1" v-on:click="nav($event)">
+                                    <div class="item-media" name="w1"><i class="icon glyphicon-star"></i></div>
+                                    <div class="item-inner" name="w1">
+                                        <div class="item-title" name="w1">Item title</div>
+                                   </div>
+                                </a>
+                            </li>
+                            <li id="w2" style="display:none" >
+                                <a href="#" class="item-link item-content" name="w2" v-on:click="nav($event)">
+                                    <div class="item-media"  name="w2" ><i class="icon glyphicon-star"></i></div>
+                                    <div class="item-inner"  name="w2">
+                                        <div class="item-title"  name="w2" >Item title</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li id="m1" style="display:none" >
+                                <a href="#" class="item-link item-content" name="m1" v-on:click="nav($event)">
+                                    <div class="item-media" name="m1"><i class="icon glyphicon-star"></i></div>
+                                    <div class="item-inner" name="m1">
+                                        <div class="item-title" name="m1">Item title</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li id="m2" style="display:none">
+                                <a href="#" class="item-link item-content" name="m2" v-on:click="nav($event)">
+                                    <div class="item-media" name="m2"><i class="icon glyphicon-star"></i></div>
+                                    <div class="item-inner" name="m2">
+                                        <div class="item-title" name="m2">Item title</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+
+
+
+                <div style="">
+                    <div class="row">
+                        <div class="col-50">
+                            <div id="btnHistory" style="font-weight:normal; font-size:smaller" class="button " v-on:click="history()">
+                                Order History
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text subscribeInfoText" style="font-size:small; position:absolute;bottom:10px;">* Subscribe two days ahead</div>
+
+            </div>
+          
+        </form>
+
+    </div>
+   
+</div>

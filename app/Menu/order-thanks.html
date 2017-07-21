@@ -6,13 +6,15 @@
     </div>
     <div class="content-block-slim thanks">
         <div class="thanks-title">Thank You</div>
-        <div class="order-success">Your order was placed successfully</div>
+        <!--<div class="order-success">Your order was placed successfully</div>-->
+        <div class="order-success"  v-show="isPickup">Your pickup order has been successfully placed.</div>
+        <div class="order-success"  v-show="!isPickup">Your delivery order has been successfully placed.</div>
         <div class="thanks-wrapper">
             <div class="desc">
                 <div class="is-pickup" v-show="isPickup">
-                    Your pickup order has been placed in the selected outlet.
+                    We are cooking up your food, adding some spices and a pinch of salt.
                     <div class="order-info">
-                        <div style="margin: 25px 0px;"  class="title">For more information, </div>
+                        <div style="margin: 25px 0px;" class="title">Good to know,</div>
                         <div class="desc">
                             <div class="item">
                                 Outlet Name : {{restInfo.name}}
@@ -24,13 +26,13 @@
                     </div>
                 </div>
                 <div class="is-delivery" v-show="!isPickup">
-                    Your order will be soon delivered. Your pickup order has been placed in the selected outlet.
+                    We are cooking up your food, adding some spices and a pinch of salt.
                     <div class="order-info">
-                        <div class="title">For more information</div>
+                        <div class="title">Good to know,</div>
                         <div class="desc">
-                            <div class="item">
+                            <!--<div class="item">
                                 Outlet Name : {{restInfo.name}}
-                            </div>
+                            </div>-->
                             <div class="item" v-show="!restInfo.contactNumber">
                                 Contact Number : {{restInfo.contactNumber}}
                             </div>

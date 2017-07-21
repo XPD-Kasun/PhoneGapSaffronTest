@@ -2,29 +2,47 @@
     <div class="page-content">
         <div class="content-block-slim" style="margin-top:45px;">
             <div class="h1" style="width: 100%;text-align: center;font-weight: bold;font-size: 19px;">Your Order Details</div>
-            <div class="final-order-items-wrapper">
+            <div class="final-order-items-wrapper" >
 
                 <template v-for="order in orderList">
                     <div class="day-order">
-                        <div class="title">{{order.title}}</div>
-                        <div class="day-order-details">
-                            <ul style="background-color: #f1f1f1;list-style: none;padding-left: 0px;">
-                                <li class="item-content" v-for="listItem in order.list">
-                                    <div class="row">
-                                        <div class="col-75">{{listItem.name}}</div>
-                                        <div class="col-25" style="text-align: right">Rs. {{listItem.price}}</div>
-                                    </div>
-                                    <div v-show="listItem.extras.length > 0">                                     
-                                        <div class="row extra-price-item" v-for="extraItem in listItem.extras">
-                                            +&nbsp;<div class="col-75">{{extraItem.name}} x {{extraItem.quantity}}</div>
-                                            <div class="col-25" style="text-align: right">Rs. {{extraItem.price}}</div>
+                        <div class="list-block" style="background:transparent">
+                            <ul style="background:transparent">
+                                <li class="accordion-item">
+                                    <a href="#" class="item-content item-link" style="font-weight:bold">
+                                        <div class="item-inner">
+                                            <div class="item-title">{{order.title}} - Rs. {{order.total}}</div>
+                                        </div>
+                                    </a>
+                                    <div class="accordion-item-content">
+                                        <div class="day-order-details" style="font-size:smaller">
+                                            <div class="row item-content" v-for="listItem in order.list">
+                                                <div class="row">
+                                                    <div class="col-75">{{listItem.accompany.name}} x {{listItem.accompany.quantity}}</div>
+                                                    <div class="col-25" style="text-align: right">Rs. {{listItem.accompany.price}}</div>
+                                                </div>
+                                                <div class="row ">
+                                                    <div class="col-75">{{listItem.riceType.name}} x {{listItem.riceType.quantity}}</div>
+                                                    <div class="col-25" style="text-align: right">Rs. {{listItem.riceType.price}}</div>
+                                                </div>
+                                                <div class="row" v-for="extraItem in listItem.options" v-show="listItem.options.length > 0">
+                                                    <div class="col-75">{{extraItem.name}} x {{extraItem.quantity}}</div>
+                                                    <div class="col-25" style="text-align: right">Rs. {{extraItem.price}}</div>
+                                                </div>
+                                                <div class="row" v-for="extraItem in listItem.extras" v-show="listItem.extras.length > 0">
+                                                    <div class="col-75">{{extraItem.name}} x {{extraItem.quantity}}</div>
+                                                    <div class="col-25" style="text-align: right">Rs. {{extraItem.price}}</div>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                   
                                 </li>
                             </ul>
                         </div>
                     </div>
+                    <div class="title"></div>
+
                 </template>
 
 

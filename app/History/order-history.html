@@ -2,24 +2,26 @@
     <div class="navbar">
         <div class="navbar-inner">
             <div class="center" style="line-height: 50px;">Saffron Kitchens</div>
-            <div class="right" v-show="currentSelection == 'history'" v-on:click="goBack()">
+            <!--<div class="right" v-show="currentSelection == 'history'" v-on:click="goBack()">
                 Back
-            </div>
+            </div>-->
         </div>
     </div>
     <div class="page-content">
         <div class="content-block-slim" >
+            
             <div class="data-range" v-show="currentSelection == 'datarange'" style="margin-top:120px;">
+                <div class="title" style="margin-bottom:20px;">Search Order</div>
                 <div class="start-date form-item">
                     <div class="select" id="startDate" v-on:click="selectStartDate()">
-                        {{startDate ? 'Start Date : ' + startDate : 'Select Start Date'}}
+                        {{startDate ? 'Date to search : ' + startDate : 'Select date for retrieve history'}}
                     </div>
                 </div>
-                <div class="end-date form-item">
+                <!--<div class="end-date form-item">
                     <div class="select" id="endDate" v-on:click="selectEndDate()">
                         {{endDate ? 'End Date : ' + endDate : 'Select End Date'}}
                     </div>
-                </div>
+                </div>-->
                 <div class="form-item">
                     <div class="button button-fill yellow" style="margin-top: 20px;" v-on:click="searchHistory()">
                         SEARCH
@@ -30,12 +32,13 @@
         <div class="history" v-show="currentSelection == 'history'">
             <div class="history-wrapper">                
                 <div class="title" style="text-align: center;font-size: 19px;">
-                    Order History Between <br /> {{startDate}} and {{endDate}}
+                    <!--Order History Between <br /> {{startDate}} and {{endDate}}-->
+                    Your last order on <br /> {{startDate}}
                 </div>
             </div>
             <div class="history-cards" v-show="histories.length != 0">
                 <div class="content-block-slim" style="overflow-y:auto;height:78vh;">
-                    <div class="card" v-for="history in histories">
+                    <div class="card" v-for="history in histories" v-bind:style="{backgroundColor:orderStatusColors[history.OrderStatus]}">
                         <!--<div class="card-header">Header</div>-->
                         <div class="card-content">
                             <div class="card-content-inner">
@@ -49,19 +52,26 @@
                                     <div class="price">
                                         Total Price : Rs. {{history.TotalPrice}}
                                     </div>
+                                    <div class="price">
+                                        Order Status : {{history.statusText}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer">
                             <div class="row" style="width: 100%;">
-                                <div class="col-100"><div class="button button-fill" style="background-color: #e22e2e;" v-on:click="orderInfo(history)">Order Information</div></div>
+                                <div class="col-100"><div class="button button-fill" v-on:click="orderInfo(history)">Order Information</div></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="content-block">
-                <div class="no-orders" v-show="histories.length == 0">
+            <div class="content-block-slim">
+                <div class="button button-fill yellow"  v-on:click="goBack()">Back</div>
+            </div>
+
+            <div class="content-block" v-show="histories.length == 0">
+                <div class="no-orders">
                     <i class="f7-icons color-black" style="position: relative;left: -10px;top: 4px;">info</i>Look like there are no orders recorded .
                 </div>
             </div>

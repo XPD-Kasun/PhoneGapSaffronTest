@@ -6,14 +6,14 @@
     </div>
     <div class="page-content">
         <div class="content-block-slim" style="margin-top:45px;">
-            <div class="h1" style="width:100%;text-align:center;font-weight:bold;font-size: 21px;">Ordered Items</div>
+            <div class="h1" style="width:100%;text-align:center;font-weight:bold;font-size: 21px;">My Order Confirmation</div>
             <div class="order-items-wrapper" v-show="orderList.length > 0">
                 <ul style="background-color: #f1f1f1;list-style: none;padding-left: 0px;">
                     <template v-for="order in orderList">
                         <li class="item-content">
                             <div class="order-item">
                                 <div class="main-curry">
-                                    <div class="title">{{order.name}}<span class="x2" v-show="order.count>0">X {{order.count}}</span></div>
+                                    <div class="title">{{order.name}}<span class="x2" v-show="order.count>0"> qty {{order.count}}</span></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-80">
@@ -22,13 +22,12 @@
                                     <div class="col-20"></div>
                                 </div>
                                 <div class="actions">
-                                    <div class="delete" v-on:click="deleteClick(i)"></div>
-                                    <div class="edit" style="display:none;" v-on:click="editClick(i)"></div>
+                                    <div class="delete" v-on:click="deleteClick(order.i)"></div>
+                                    <div class="edit" style="display:none;" v-on:click="editClick(order.i)"></div>
                                 </div>
                             </div>
                         </li>
                     </template>
-
                 </ul>
             </div>
             <div class="no-orders" v-show="orderList.length == 0">
