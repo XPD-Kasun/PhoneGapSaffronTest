@@ -32,4 +32,6 @@
     </platform>
     <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
     <!--<preference name="Fullscreen" value="true" /> -->
+	<preference name="KeyboardDisplayRequiresUserAction" value="true" />
+
 </widget>
