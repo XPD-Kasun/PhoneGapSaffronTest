@@ -27,7 +27,7 @@
         }
 
         //Platform that app targets : ['web','app']
-        window.platform = 'web';
+        window.platform = 'app';
 
         //fb api init
 
@@ -70,6 +70,7 @@
 
         function onKeyboardShow(e) {
             setTimeout(function () {
+alert('test')
                 e.target.activeElement.scrollIntoViewIfNeeded()
             }, 500) //needed timeout to wait for viewport to resize
         }
