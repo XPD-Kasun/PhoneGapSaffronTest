@@ -67,6 +67,20 @@
             document.body.appendChild(s);
         }
 
+window.addEventListener('native.keyboardshow', keyboardShowHandler);
+
+function keyboardShowHandler(e){
+    alert('Keyboard height is: ' + e.keyboardHeight);
+}
+
+// This event fires when the keyboard will hide
+
+window.addEventListener('native.keyboardhide', keyboardHideHandler);
+
+function keyboardHideHandler(e){
+    console.log('Goodnight, sweet prince');
+}
+
 
         function onKeyboardShow(e) {
             setTimeout(function () {
