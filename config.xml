@@ -31,6 +31,7 @@
         <allow-intent href="market:*" />
     </platform>
     <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
+<plugin name="com.ionic.keyboard" spec="1.0.3" source="pgb" />
     <preference name="Fullscreen" value="false" />
 	<preference name="KeyboardDisplayRequiresUserAction" value="false" />
 
