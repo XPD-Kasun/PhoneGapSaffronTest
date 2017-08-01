@@ -35,7 +35,7 @@
                     <div class="title"></div>
                     <div class="list-block" style="margin-top: 10px;margin-bottom:10px;">
                         <ul v-show="!isGuest">
-                            <li>
+                            <li v-show="showHome">
                                 <label class="label-radio item-content">
                                     <!-- Checked by default -->
                                     <input type="radio" name="my-checkbox" value="home" v-model="locationType">
@@ -47,7 +47,7 @@
                                     </div>
                                 </label>
                             </li>
-                            <li>
+                            <li v-show="showOffice">
                                 <label class="label-radio item-content">
                                     <input type="radio" name="my-checkbox" value="office" v-model="locationType">
                                     <div class="item-media">
