@@ -66,14 +66,16 @@
                     </div>
                 </div>
             </div>
-            <div class="content-block-slim">
-                <div class="button button-fill yellow"  v-on:click="goBack()">Back</div>
-            </div>
+            
 
-            <div class="content-block" v-show="histories.length == 0">
+            <div class="content-block-slim" v-show="histories.length == 0">
                 <div class="no-orders">
                     <i class="f7-icons color-black" style="position: relative;left: -10px;top: 4px;">info</i>Look like there are no orders recorded .
                 </div>
+            </div>
+
+            <div class="content-block-slim">
+                <div class="button button-fill yellow" v-on:click="goBack()">Back</div>
             </div>
            
         </div>
