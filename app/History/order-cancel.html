@@ -13,7 +13,7 @@
                 </div>
             </div>-->
             <div class="history-cards">
-                <div class="content-block-slim" style="overflow-y:auto;height:82vh; margin-top: 30px;">
+                <div class="content-block-slim" style="overflow-y:auto;height:82vh; margin-top: 30px;" v-show="orders.length > 0">
                     <div class="card" v-for="history in orders">
                         <!--<div class="card-header">Header</div>-->
                         <div class="card-content">
@@ -38,6 +38,11 @@
                             </div>
 
                         </div>
+                    </div>
+                </div>
+                <div class="content-block-slim" v-show="orders.length == 0">
+                    <div class="no-orders">
+                        <i class="f7-icons color-black" style="position: relative;left: -10px;top: 4px;">info</i>Look like there are no orders to cancel.
                     </div>
                 </div>
             </div>
