@@ -7,20 +7,23 @@
     <div class="content-block-slim thanks">
         <div class="thanks-title">Thank You</div>
         <!--<div class="order-success">Your order was placed successfully</div>-->
-        <div class="order-success"  v-show="isPickup">Your pickup order has been successfully placed.</div>
-        <div class="order-success"  v-show="!isPickup">Your delivery order has been successfully placed.</div>
+        <div class="order-success" v-show="isPickup">Your pickup order has been successfully placed.</div>
+        <div class="order-success" v-show="!isPickup">Your delivery order has been successfully placed.</div>
         <div class="thanks-wrapper">
             <div class="desc">
                 <div class="is-pickup" v-show="isPickup">
                     We are cooking up your food, adding some spices and a pinch of salt.
                     <div class="order-info">
-                        <div style="margin: 25px 0px;" class="title">Good to know,</div>
+                        <div style="margin: 25px 0px;" class="title"></div>
                         <div class="desc">
                             <div class="item">
                                 Outlet Name : {{restInfo.name}}
                             </div>
+                            <!--<div class="item" v-show="!restInfo.contactNumber">
+                                Contact Number : {{restInfo.contactNumbers}}
+                            </div>-->
                             <div class="item" v-show="!restInfo.contactNumber">
-                                Contact Number : {{restInfo.contactNumber}}
+                                Contact Number : <a class="external" href="tel:0773203672">0773203672</a>, <a class="external" href="tel:0773203672">0773203672</a>
                             </div>
                         </div>
                     </div>
@@ -28,14 +31,18 @@
                 <div class="is-delivery" v-show="!isPickup">
                     We are cooking up your food, adding some spices and a pinch of salt.
                     <div class="order-info">
-                        <div class="title">Good to know,</div>
+                        <div class="title"></div>
                         <div class="desc">
                             <!--<div class="item">
                                 Outlet Name : {{restInfo.name}}
                             </div>-->
+                            <!--<div class="item" v-show="!restInfo.contactNumber">
+                                Contact Number : {{restInfo.contactNumbers}}
+                            </div>-->
                             <div class="item" v-show="!restInfo.contactNumber">
-                                Contact Number : {{restInfo.contactNumber}}
+                                Contact Number : <a class="external" href="tel:0773203672">0773203672</a>, <a class="external" href="tel:0773203672">0773203672</a>
                             </div>
+
                         </div>
                     </div>
                 </div>

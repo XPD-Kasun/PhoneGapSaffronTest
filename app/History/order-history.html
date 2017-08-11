@@ -33,7 +33,7 @@
             <div class="history-wrapper">                
                 <div class="title" style="text-align: center;font-size: 19px;">
                     <!--Order History Between <br /> {{startDate}} and {{endDate}}-->
-                    Your orders on <br /> {{startDate}}
+                    Order history on today and beyond
                 </div>
             </div>
             <div class="history-cards" v-show="histories.length != 0">
@@ -47,7 +47,10 @@
                                         {{history.OrderDate}} - {{history.name}}
                                     </div>
                                     <div class="delivery-type">
-                                        Delivery Method : {{history.DeliveryType == "1" ? "Delivery" :"Pickup"}}
+                                        Method : {{history.DeliveryType == "1" ? "Delivery" :"Pickup"}}
+                                    </div>
+                                    <div class="delivery-type">
+                                        Delivery Date : {{history.DeliveryStartDate}}
                                     </div>
                                     <div class="price">
                                         Total Price : Rs. {{history.TotalPrice}}
@@ -74,9 +77,9 @@
                 </div>
             </div>
 
-            <div class="content-block-slim">
+            <!--<div class="content-block-slim">
                 <div class="button button-fill yellow" v-on:click="goBack()">Back</div>
-            </div>
+            </div>-->
            
         </div>
     </div>

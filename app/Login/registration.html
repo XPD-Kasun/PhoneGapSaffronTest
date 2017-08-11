@@ -10,16 +10,19 @@
                 <div class="form-title">
                     {{isEdit? "EDIT YOUR PROFILE" : "REGISTRATION FORM"}}
                 </div>
-                <div class="form-item"><input class="text-box" type="text" name="mobileNumber" v-model="MobileNumber" placeholder="Mobile Number" /></div>
+                <div class="form-item">
+                    <div class="text-box" style="line-height:40px;background-color: #f1f1f1;">{{MobileNumber}}</div>
+                    <!--<input class="text-box" type="text" name="mobileNumber" v-model="MobileNumber" placeholder="Mobile Number" />-->
+                </div>
                 <div class="row-gap-1"></div>
                 <div class="form-item"><input class="text-box" type="text" name="firstName" v-model="FName" placeholder="Your first name" /></div>
                 <div class="form-item"><input class="text-box" type="text" name="lastName" v-model="LName" placeholder="Your last name" /></div>
                 <div class="form-item">
                     <!--<p>I am</p>-->
                     <!--<div class="buttons-row" style="width:100%;">
-                        <div href="#" class="button yellow" v-bind:class="[IsMale ? 'button-fill' : '']" v-on:click="toggleGender(true)">Male</div>
-                        <div href="#" class="button yellow" v-bind:class="[IsMale ? '' : 'button-fill']" v-on:click="toggleGender(false)">Female</div>
-                    </div>-->
+                    <div href="#" class="button yellow" v-bind:class="[IsMale ? 'button-fill' : '']" v-on:click="toggleGender(true)">Male</div>
+                    <div href="#" class="button yellow" v-bind:class="[IsMale ? '' : 'button-fill']" v-on:click="toggleGender(false)">Female</div>
+                </div>-->
                     <div class="row no-gutter" style="width:100%;">
                         <div class="col-50">
                             <div href="#" class="button yellow double" v-bind:class="[IsMale ? 'button-fill' : '']" v-on:click="toggleGender(true)">Male</div>
@@ -48,7 +51,7 @@
                         <div class="col-50">
                             <div class="button button-fill yellow" v-show="!done" v-on:click="save()">REGISTER</div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="form-item" style="margin-top:12px;" v-show="isEdit">
                     <div class="row">
@@ -56,7 +59,7 @@
                             <div class="button button-fill black" v-on:click="cancel()">BACK</div>
                         </div>
                         <div class="col-50">
-                            <div class="button button-fill yellow" v-show="!done"  v-on:click="save()">SAVE</div>
+                            <div class="button button-fill yellow" v-show="!done" v-on:click="save()">SAVE</div>
                         </div>
                     </div>
                 </div>
