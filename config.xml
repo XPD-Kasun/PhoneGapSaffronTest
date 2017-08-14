@@ -26,5 +26,5 @@
    <preference name="StatusBarOverlaysWebView" value="true" />
    <preference name="StatusBarBackgroundColor" value="#FFC107" />
    <preference name="orientation" value="portrait" />
-   <preference name="android-windowSoftInputMode" value="stateVisible|adjustPan"/>
+   <preference name="android-windowSoftInputMode" value="stateVisible|adjustUnspecified"/>
 </widget>
