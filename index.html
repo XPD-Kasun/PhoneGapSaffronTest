@@ -78,6 +78,12 @@
            		 }, 500) //needed timeout to wait for viewport to resize
 		});
 
+document.addEventListener('showkeyboard', function(e){
+setTimeout(function() {
+      e.target.activeElement.scrollIntoViewIfNeeded()
+    }, 500) //needed timeout to wait for viewport to resize
+}, false);
+
                 addScript('scripts/app.js');
                 try    
                 {
