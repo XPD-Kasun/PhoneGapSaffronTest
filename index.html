@@ -69,8 +69,9 @@
 
 
         function onKeyboardShow(e) {
+		alert('test');
             setTimeout(function () {
-                e.target.activeElement.scrollIntoViewIfNeeded()
+                e.target.activeElement.scrollIntoViewIfNeeded();
             }, 500) //needed timeout to wait for viewport to resize
         }
 
@@ -78,12 +79,12 @@
 
             addScript('cordova.js');
             document.addEventListener("deviceready", function () {
-                document.addEventListener('native.keyboardshow', onKeyboardShow, false);
+                document.addEventListener('native.keyboardshow', onKeyboardShow);
                 addScript('scripts/app.js');
                 try    
                 {
                    if (cordova.platformId == 'android') {
-    			StatusBar.backgroundColorByHexString("#ff9500");
+    			StatusBar.backgroundColorByHexString("#ffc603");
 		   }
                 } catch (err) {
                     alert(err.message);
