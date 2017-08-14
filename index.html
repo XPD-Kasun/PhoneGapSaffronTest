@@ -67,19 +67,17 @@
             document.body.appendChild(s);
         }
 
-
-        function onKeyboardShow(e) {
-		alert('test');
-            setTimeout(function () {
-                e.target.activeElement.scrollIntoViewIfNeeded();
-            }, 500) //needed timeout to wait for viewport to resize
-        }
-
         if (platform == 'app') {
 
             addScript('cordova.js');
             document.addEventListener("deviceready", function () {
-                document.addEventListener('native.keyboardshow', onKeyboardShow);
+                window.addEventListener('native.keyboardshow', function (e) {
+			alert('test');
+           		 setTimeout(function () {
+              		  e.target.activeElement.scrollIntoViewIfNeeded();
+           		 }, 500) //needed timeout to wait for viewport to resize
+		});
+
                 addScript('scripts/app.js');
                 try    
                 {
