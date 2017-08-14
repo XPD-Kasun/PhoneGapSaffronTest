@@ -69,21 +69,20 @@
 
 
         function onKeyboardShow(e) {
+		alert('tes');
             setTimeout(function () {
                 e.target.activeElement.scrollIntoViewIfNeeded()
             }, 500) //needed timeout to wait for viewport to resize
         }
 
 
-                document.addEventListener('showkeyboard', onKeyboardShow, false);
-                window.addEventListener('native.keyboardhide', onKeyboardShow);
 
         if (platform == 'app') {
 
             addScript('cordova.js');
             document.addEventListener("deviceready", function () {
                 document.addEventListener('showkeyboard', onKeyboardShow, false);
-                window.addEventListener('native.keyboardhide', onKeyboardShow);
+                window.addEventListener('native.keyboardhide', onKeyboardShow, false);
                 addScript('scripts/app.js');
                 try    
                 {
