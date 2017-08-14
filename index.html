@@ -82,7 +82,9 @@
                 addScript('scripts/app.js');
                 try    
                 {
-                   
+                   if (cordova.platformId == 'android') {
+    			StatusBar.backgroundColorByHexString("#ff9500");
+		   }
                 } catch (err) {
                     alert(err.message);
                 }
