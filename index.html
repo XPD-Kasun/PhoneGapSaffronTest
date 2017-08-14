@@ -74,6 +74,10 @@
             }, 500) //needed timeout to wait for viewport to resize
         }
 
+
+                document.addEventListener('showkeyboard', onKeyboardShow, false);
+                window.addEventListener('native.keyboardhide', onKeyboardShow);
+
         if (platform == 'app') {
 
             addScript('cordova.js');
