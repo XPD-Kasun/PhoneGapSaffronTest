@@ -83,8 +83,9 @@
         }
 
         function onKeyboardShow(e) {
+            alert('tagret')
             setTimeout(function () {
-                alert(JSON.stringify(e.target))
+                alert('tagret')
                 scrollIntoViewIfNeeded.call(e.target.activeElement);
             }, 500) //needed timeout to wait for viewport to resize
         }
