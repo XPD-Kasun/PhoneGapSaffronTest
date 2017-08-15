@@ -81,7 +81,7 @@
             addScript('cordova.js');
             document.addEventListener("deviceready", function () {
                 document.addEventListener('showkeyboard', onKeyboardShow, false);
-                window.addEventListener('native.keyboardhide', onKeyboardShow, false);
+                window.addEventListener('native.keyboardhide', onKeyboardShow);
                 addScript('scripts/app.js');
                 try    
                 {
