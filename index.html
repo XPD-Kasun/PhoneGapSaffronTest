@@ -1,9 +1,24 @@
-<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui"><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><title>Saffron Kitchens</title><link href=styles/styles.css rel=stylesheet><script src=./scripts/modernizerx.js></script><script src=./scripts/browserCaps.js></script></head><body class=theme-orange><div class=statusbar-overlay></div><div class=panel-overlay></div><div class="panel panel-left panel-reveal"><div id=side-panel class=side-panel><div class=side-panel-x><div class=side-panel-logo></div><ul class=side-panel-list><li class=side-panel-home>Home</li><li class=side-panel-subscription>Subscription</li><li class=side-panel-orderhistory>My Order History</li><li class=side-panel-ordercancel>Order Cancellation</li><li class=side-panel-changepassword>Change Password</li><li class=side-panel-signout>Sign Out</li></ul></div></div></div><div class=views><div class="view view-main navbar-through"><div class=chevron-icon id=sidebar-opener style=display:none;></div><div class=pages><div class=page data-page=prelogin style=background-color:#ffc500><div class=splash-retro-x><div class=logo></div><div class=text>SAFFRON KITCHENS<br><span class=x>Ordering App</span></div><div class=sk-folding-cube><div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div></div></div></div></div></div></div><script>
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name=apple-mobile-web-app-capable content=yes>
+    <meta name=apple-mobile-web-app-status-bar-style content=black>
+    <title>Saffron Kitchens</title>
+    <link href=styles/styles.css rel=stylesheet>
+    <script src=./scripts/modernizerx.js></script>
+    <script src=./scripts/browserCaps.js></script>
+</head>
+<body class=theme-orange>
+    <div class=statusbar-overlay></div><div class=panel-overlay></div><div class="panel panel-left panel-reveal"><div id=side-panel class=side-panel><div class=side-panel-x><div class=side-panel-logo></div><ul class=side-panel-list><li class=side-panel-home>Home</li><li class=side-panel-subscription>Subscription</li><li class=side-panel-orderhistory>My Order History</li><li class=side-panel-ordercancel>Order Cancellation</li><li class=side-panel-changepassword>Change Password</li><li class=side-panel-signout>Sign Out</li></ul></div></div></div><div class=views><div class="view view-main navbar-through"><div class=chevron-icon id=sidebar-opener style=display:none;></div><div class=pages><div class=page data-page=prelogin style=background-color:#ffc500><div class=splash-retro-x><div class=logo></div><div class=text>SAFFRON KITCHENS<br><span class=x>Ordering App</span></div><div class=sk-folding-cube><div class="sk-cube1 sk-cube"></div><div class="sk-cube2 sk-cube"></div><div class="sk-cube4 sk-cube"></div><div class="sk-cube3 sk-cube"></div></div></div></div></div></div></div>
+    <script>
         window.root = './';
-       // window.apiRoot = 'http://192.168.2.200/sfapi/';
+        // window.apiRoot = 'http://192.168.2.200/sfapi/';
         window.apiRoot = 'http://203.143.20.94/sfapi/';
         window.posRoot = 'https://reztguruonlineorderingapi.vdinepos.com/v1/';
-    </script><script>
+    </script>
+    <script>
         //Polyfill for includes() function for fb login, which doesnt work in all browsers.
 
         if (!String.prototype.includes) {
@@ -13,7 +28,7 @@
             };
         }
 
-  
+
 
         function getUrlVars(url) {
             var vars = [], hash;
@@ -67,10 +82,35 @@
             document.body.appendChild(s);
         }
 
+        var scrollIntoViewIfNeeded = function (centerIfNeeded) {
+            centerIfNeeded = arguments.length === 0 ? true : !!centerIfNeeded;
+
+            var parent = this.parentNode,
+                parentComputedStyle = window.getComputedStyle(parent, null),
+                parentBorderTopWidth = parseInt(parentComputedStyle.getPropertyValue('border-top-width')),
+                parentBorderLeftWidth = parseInt(parentComputedStyle.getPropertyValue('border-left-width')),
+                overTop = this.offsetTop - parent.offsetTop < parent.scrollTop,
+                overBottom = (this.offsetTop - parent.offsetTop + this.clientHeight - parentBorderTopWidth) > (parent.scrollTop + parent.clientHeight),
+                overLeft = this.offsetLeft - parent.offsetLeft < parent.scrollLeft,
+                overRight = (this.offsetLeft - parent.offsetLeft + this.clientWidth - parentBorderLeftWidth) > (parent.scrollLeft + parent.clientWidth),
+                alignWithTop = overTop && !overBottom;
+
+            if ((overTop || overBottom) && centerIfNeeded) {
+                parent.scrollTop = this.offsetTop - parent.offsetTop - parent.clientHeight / 2 - parentBorderTopWidth + this.clientHeight / 2;
+            }
+
+            if ((overLeft || overRight) && centerIfNeeded) {
+                parent.scrollLeft = this.offsetLeft - parent.offsetLeft - parent.clientWidth / 2 - parentBorderLeftWidth + this.clientWidth / 2;
+            }
+
+            if ((overTop || overBottom || overLeft || overRight) && !centerIfNeeded) {
+                this.scrollIntoView(alignWithTop);
+            }
+        };
 
         function onKeyboardShow(e) {
-            setTimeout(function () {   
-                e.target.activeElement.scrollIntoViewIfNeeded()
+            setTimeout(function () {
+                scrollIntoViewIfNeeded.call(e.target.activeElement);
             }, 500) //needed timeout to wait for viewport to resize
         }
 
@@ -83,9 +123,8 @@
                 document.addEventListener('showkeyboard', onKeyboardShow, false);
                 window.addEventListener('native.keyboardhide', onKeyboardShow);
                 addScript('scripts/app.js');
-                try    
-                {
-                   
+                try {
+
                 } catch (err) {
                     alert(err.message);
                 }
@@ -96,13 +135,15 @@
 
         }
         else {
-            
+
 
             addScript('scripts/app.js');
         }
 
-        
+
 
         //
 
-    </script></body></html>
+    </script>
+</body>
+</html>
