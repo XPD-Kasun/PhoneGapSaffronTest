@@ -83,16 +83,20 @@
         }
 
         function onKeyboardShow(e) {
-            alert('tagret')
             setTimeout(function () {
-                alert('tagret')
                 scrollIntoViewIfNeeded.call(e.target.activeElement);
             }, 500) //needed timeout to wait for viewport to resize
         }
 
+     
+
 
 
         if (platform == 'app') {
+
+            $('input, textarea, button, a, select').off('touchstart mousedown').on('touchstart mousedown', function (e) {
+                e.stopPropagation();
+            });
 
             addScript('cordova.js');
             document.addEventListener("deviceready", function () {
