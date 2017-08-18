@@ -11,8 +11,8 @@
                     {{isEdit? "EDIT YOUR PROFILE" : "REGISTRATION FORM"}}
                 </div>
                 <div class="form-item">
-                    <div class="text-box" style="line-height:40px;background-color: #f1f1f1;">{{MobileNumber}}</div>
-                    <!--<input class="text-box" type="text" name="mobileNumber" v-model="MobileNumber" placeholder="Mobile Number" />-->
+                    <div v-show="isEdit || RegType != 1" class="text-box" style="line-height:40px;background-color: #f1f1f1;">{{MobileNumber}}</div>
+                    <input v-show="RegType == 1 && !isEdit" class="text-box" type="text" name="mobileNumber" v-model="MobileNumber" placeholder="Mobile Number" />
                 </div>
                 <div class="row-gap-1"></div>
                 <div class="form-item"><input class="text-box" type="text" name="firstName" v-model="FName" placeholder="Your first name" /></div>

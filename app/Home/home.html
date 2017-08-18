@@ -10,7 +10,7 @@
     </a>
     <div class="page-content" style="">
         <div class="profile">
-            <div class="logo"></div>
+            <div class="logo" v-bind:class="{female: !isMale}"></div>
             <div class="profile-info">Welcome, {{firstName}}</div>
         </div>
         <div class="content-block-slim">

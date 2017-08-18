@@ -99,19 +99,19 @@
                     </div>
 
                     <!--Vegitable options-->
-                    <div v-show="showVegitableOptions">
+                    <div>
 
                         <div class="form-item">
-                            <div class="title">VEGITABLE OPTIONS (MAX 3 ITEMS)</div>
+                            <div class="title">VEGETABLE OPTIONS (MAX 4 ITEMS)</div>
                         </div>
-                        <div class="form-item">
+                        <div class="form-item" v-show="showVegitableOptions">
                             <div class="list-block" style="margin-top: 10px;margin-bottom:10px;">
                                 <ul>
                                     <template v-for="choice in normalMainChoices">
                                         <li>
                                             <label class="label-checkbox item-content">
                                                 <!-- Checked by default -->
-                                                <input :disabled="normalMenu.options.length >= 3 && normalMenu.options.indexOf(choice.id) == -1"
+                                                <input :disabled="normalMenu.options.length >= 4 && normalMenu.options.indexOf(choice.id) == -1"
                                                        type="checkbox"
                                                        name="my-checkbox"
                                                        :value="choice.id"
