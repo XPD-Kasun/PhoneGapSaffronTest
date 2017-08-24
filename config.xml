@@ -27,4 +27,8 @@
    <preference name="StatusBarBackgroundColor" value="#FFC107" />
    <preference name="orientation" value="portrait" />
    <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize"/>
+
+
+  <icon src="android/icon.png" platform="android" width="512" height="512" density="mdpi" />
+
 </widget>
